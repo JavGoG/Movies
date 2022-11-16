@@ -1,7 +1,9 @@
 import './App.css';
 import { useEffect } from 'react';
+import SearchIcon from './search.svg';
 
-const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=d39fd0c0"
+const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=d39fd0c0";
+
 
 function App() {
 
@@ -20,8 +22,14 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <h1>Movies</h1>
+    <div className="app">
+      <h1>MovieLand</h1>
+
+      <div className='search'>
+        <input
+          placeholder='Search for movies'
+        />
+      </div>
     </div>
   );
 }
