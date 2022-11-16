@@ -1,9 +1,17 @@
 import './App.css';
 import { useEffect } from 'react';
 import SearchIcon from './search.svg';
+import MovieCard from './MovieCard';
 
 const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=d39fd0c0";
 
+const movie1 = {
+  "Title": "The Godfather",
+  "Year": "1972",
+  "imdbID": "tt0068646",
+  "Type": "movie",
+  "Poster": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
+}
 
 function App() {
 
@@ -26,9 +34,20 @@ function App() {
       <h1>MovieLand</h1>
 
       <div className='search'>
+        {/* Typing the properties in block is easier to read */}
         <input
           placeholder='Search for movies'
+          value='superman'
+          onChange={() => { }}
         />
+        <img
+          src={SearchIcon}
+          alt="search icon"
+          onClick={() => { }}
+        />
+      </div>
+      <div className='container'>
+        <MovieCard movie1={movie1} />
       </div>
     </div>
   );
