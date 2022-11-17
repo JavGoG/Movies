@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SearchIcon from './search.svg';
 import MovieCard from './MovieCard';
 
@@ -14,6 +14,9 @@ const movie1 = {
 }
 
 function App() {
+  // We create states for the input user 
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("")
 
   // Front-End connects with Back-End API
   const searchMovies = async (title) => {
@@ -21,9 +24,9 @@ function App() {
     const data = await response.json();
     // The API has got the Search property field
     // which holds the values of our API request
-    console.log(data.Search);
-
+    setMovies(data.Search);
   }
+
   // searchMovies are called once when the page is loaded
   useEffect(() => {
     searchMovies('The Godfather');
@@ -37,18 +40,33 @@ function App() {
         {/* Typing the properties in block is easier to read */}
         <input
           placeholder='Search for movies'
-          value='superman'
-          onChange={() => { }}
+          // The value now change dynamically 
+          value={searchTerm}
+          // e parameter is given for event
+          onChange={(e) => { setSearchTerm(e.target.value) }}
         />
         <img
           src={SearchIcon}
           alt="search icon"
-          onClick={() => { }}
+          onClick={() => searchMovies(searchTerm)}
         />
       </div>
-      <div className='container'>
-        <MovieCard movie1={movie1} />
-      </div>
+
+      {/* If there are movie/s print them
+          if not, return 'no movies found' */}
+      {movies?.length > 0
+        ? (
+          <div className='container'>
+            {movies.map((movie) => (
+              <MovieCard movie={movie} />
+            ))}
+          </div>
+        ) : (
+          <div className='empty'>
+            <h2>No movies found</h2>
+          </div>
+        )
+      }
     </div>
   );
 }
