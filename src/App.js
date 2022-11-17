@@ -57,8 +57,10 @@ function App() {
       {movies?.length > 0
         ? (
           <div className='container'>
-            {movies.map((movie) => (
-              <MovieCard movie={movie} />
+            {/* Mapping an array of children props:
+            every child-prop should have a unique key. */}
+            {movies.map((movie, key) => (
+              <MovieCard key={key} movie={movie} />
             ))}
           </div>
         ) : (
