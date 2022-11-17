@@ -19,7 +19,7 @@ function App() {
     setMovies(data.Search);
   }
 
-  // searchMovies are called once when the page is loaded
+  // searchMovies are called once when the page is loaded -> []
   useEffect(() => {
     searchMovies('The Godfather');
   }, [])
@@ -44,8 +44,8 @@ function App() {
         />
       </div>
 
-      {/* If there are movie/s print them
-          if not, return 'no movies found' */}
+      {/* If there are movie/s print them,
+          if not return 'no movies found' */}
       {movies?.length > 0
         ? (
           <div className='container'>

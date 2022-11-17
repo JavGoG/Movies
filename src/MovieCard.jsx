@@ -8,6 +8,7 @@ return (
         </div>
 
         <div>
+            {/* N/A is returned by the API when not movie is found */}
             <img src={movie.Poster !== 'N/A' ? movie.Poster : 'http://via.placeholder.com/400'} alt={movie.Title} />
         </div>
 
